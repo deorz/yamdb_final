@@ -1,14 +1,12 @@
 version: '3.8'
 
 services:
-  # Описание контейнера db
   db:
     image: postgres:13.0-alpine
     volumes:
       - /var/lib/postgresql/data/
     env_file:
       - ./.env
-  # Описание контейнера web
   web:
     image: deorz/yamdb_final:latest
     restart: always
@@ -19,7 +17,6 @@ services:
       - db
     env_file:
       - ./.env
-  # Описание контейнера nginx
   nginx:
     image: nginx:1.21.3-alpine
     ports:
